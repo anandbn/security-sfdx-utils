@@ -6,7 +6,8 @@ A collection of sfdx plugins around sharing, profile and permissionset configura
 ### Installation
 
 ```
-sfdx plugins:install 
+sfdx plugins:install https://github.com/anandbn/security-sfdx-utils
+
 ```
 
 
