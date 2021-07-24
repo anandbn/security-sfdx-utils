@@ -1,0 +1,7 @@
+{
+  "commandDescription": "A summary of objects and the respective CRUD permissions for that profile",
+  "nameFlagDescription": "Name of the profile",
+  "objectsFlagDescription": "A comma separated list of object to display the CRUD",
+  "typeFlagDescription": "CRUD | FLS | SYSTEM | TAB | APP",
+  "filtersFlagDescription": "A comma separate list of strings that you want to apply a filter to the results. E.g. field name, object name etc."
+}
