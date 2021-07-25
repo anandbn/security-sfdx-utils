@@ -1,8 +1,6 @@
 import { flags, SfdxCommand, TableOptions } from '@salesforce/command';
-import { Messages, SfdxError } from '@salesforce/core';
-import { AnyJson,QueryResult } from '@salesforce/ts-types';
-import { table } from 'console';
-
+import { Messages} from '@salesforce/core';
+import { AnyJson } from '@salesforce/ts-types';
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
 
@@ -35,7 +33,7 @@ export default class ProfileList extends SfdxCommand {
     // this.org is guaranteed because requiresUsername=true, as opposed to supportsUsername
     const conn = this.org.getConnection();
 
-    let result:QueryResult<any> = await conn.query<QueryResult>(`select Description,Id,IsSsoEnabled,Name,UserType from Profile`);
+    let result:any = await conn.query<any>(`select Description,Id,IsSsoEnabled,Name,UserType from Profile`);
     
     let profileList=result.records;
     if(this.flags.filters && this.flags.filters.length>0){
