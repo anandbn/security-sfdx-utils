@@ -33,7 +33,7 @@ export default class ProfileList extends SfdxCommand {
     // this.org is guaranteed because requiresUsername=true, as opposed to supportsUsername
     const conn = this.org.getConnection();
 
-    let result:any = await conn.query<any>(`select Description,Id,IsSsoEnabled,Name,UserType from Profile`);
+    let result:any = await conn.query<any>(`select Description,Id,Name,UserType from Profile`);
     
     let profileList=result.records;
     if(this.flags.filters && this.flags.filters.length>0){
@@ -48,20 +48,10 @@ export default class ProfileList extends SfdxCommand {
       });
     }
 
-    profileList = profileList.map(profile => {
-      let retObj: any = {};
-      retObj.Name = profile.Name;
-      retObj.ssoEnabled = profile.allowCreate == 'true' ? 'X' : '';
-      retObj.Id = profile.Id;
-      retObj.Description = profile.Description;
-      retObj.UserType = profile.UserType;
-      return retObj;
-    });
     let tableColumns:TableOptions = {
       columns:[
       {key:'Id',label: 'Profile Id'},
       {key:'Name',label : 'Profile Name'},
-      {key:'IsSsoEnabled',label : 'Sso Enabled?'},
       {key:'UserType',label : 'User Type'},
       {key:'Description',label : 'Description'}
     ]};
