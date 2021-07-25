@@ -1,6 +1,6 @@
 import { flags, SfdxCommand } from '@salesforce/command';
 import { Messages, SfdxError } from '@salesforce/core';
-import { AnyJson } from '@salesforce/ts-types';
+import { AnyJson,QueryResult } from '@salesforce/ts-types';
 
 // Initialize Messages with the current plugin directory
 Messages.importMessagesDirectory(__dirname);
@@ -48,6 +48,10 @@ export default class ProfileSummary extends SfdxCommand {
     // this.org is guaranteed because requiresUsername=true, as opposed to supportsUsername
     const conn = this.org.getConnection();
 
+    let profileObj:QueryResult<any> = await conn.query<QueryResult>(`select Id from Profile where Name='${this.flags.name}'`);
+    if(profileObj.totalSize == 0){
+      throw new SfdxError(messages.getMessage('errorNoProfileFound', [this.flags.name]));
+    }
     let profileMetadata: any = await conn.metadata.readSync('Profile', [`${this.flags.name}`]);
 
     let retObj;

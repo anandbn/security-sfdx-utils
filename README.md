@@ -10,6 +10,10 @@ sfdx plugins:install https://github.com/anandbn/security-sfdx-utils
 
 ```
 
+## Commands
+
+- `security:profile-summary` : Summarize all the settings in a profile
+- `security:profile-list` : List all profiles in the org
 
 ## `security:profile-summary`
 
@@ -157,4 +161,42 @@ standard-Contact             X            X
 standard-LiveChatTranscript  X            X
 standard-home                X            X
 standard-report              X            X
+```
+
+## `security:profile-list`
+
+### Parameters:
+
+- `-f` / `--filter` : A string filter to filter all results
+
+### Examples
+
+__List all profiles__:
+
+```
+$sfdx security:profile-list -u MyOrg
+
+Profile Id          Profile Name                                         Sso Enabled?  User Type     Description
+──────────────────  ───────────────────────────────────────────────────  ────────────  ────────────  ────────────────────────────────────────────────────────────────────────
+00e5e000001AKouAAG  Guest License User                                                 Guest
+00e5e000001APjZAAW  CloningProfileDoNotUse                                             Standard
+00e5e000001B5ozAAC  Virtual Assistant Landing Site1626477687196 Profile                Guest
+00e5e000001B9ogAAC  Partner Community User                                             PowerPartner
+00e5e000001BVZJAA4  Surveys Community Profile                                          Guest
+00e5e000001BVZdAAO  Virtual Assistant Minimum Access Profile                           Standard
+00e5e000001BWILAA4  CSR                                                                Standard      Customer Service Representative profile is used for all Service personas
+
+```
+
+__List all chatter profiles__:
+
+```
+$sfdx security:profile-list -u MyOrg -f 'Chat'
+
+Profile Id          Profile Name            Sso Enabled?  User Type  Description
+──────────────────  ──────────────────────  ────────────  ─────────  ───────────
+00e5e000001UWeqAAG  Chatter Free User                     CsnOnly
+00e5e000001UWezAAG  Chatter Moderator User                CsnOnly
+00e5e000001UWf0AAG  Chatter External User                 CsnOnly
+
 ```
