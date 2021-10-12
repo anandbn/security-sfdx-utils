@@ -1,9 +1,11 @@
 {
   "commandDescription": "A summary of objects and the respective CRUD permissions for that profile",
+  "profileCreateDescription":"Create an Empty Profile with no permissions",
   "nameFlagDescription": "Name of the profile",
   "objectsFlagDescription": "A comma separated list of object to display the CRUD",
   "typeFlagDescription": "CRUD | FLS | SYSTEM | TAB | APP",
   "filtersFlagDescription": "A comma separate list of strings that you want to apply a filter to the results. E.g. field name, object name etc.",
-  "errorNoProfileFound":"No profile found matching the name '%s'"
-
+  "errorNoProfileFound":"No profile found matching the name '%s'",
+  "descriptionFlag":"Description for the profile being created",
+  "licenseidFlag":"UserLicenseId for the profile being created"
 }

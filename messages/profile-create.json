@@ -1,0 +1,7 @@
+{
+  "commandDescription": "Create an Empty Profile with no permissions",
+  "nameFlag": "Name of the profile",
+  "descriptionFlag":"Description for the profile being created",
+  "licenseFlag":"UserLicense type for the profile being created",
+  "licenseTypeNotFound":"License type provided was not found in UserLicense object"
+}
